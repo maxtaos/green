@@ -16,16 +16,14 @@ spec:
   containers:
   - name: packer
     image: hashicorp/packer:full
-    command:
-    - cat
+    command: ['cat']
     tty: true
     volumeMounts:
       - mountPath: "/root/.m2"
         name: m2
   - name: docker
-    image: docker:latest
-    command:
-    - cat
+    image: docker:1.11
+    command: ['cat']
     tty: true
     volumeMounts:
     - mountPath: /var/run/docker.sock
