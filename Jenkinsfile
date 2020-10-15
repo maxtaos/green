@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      label 'image-buildd'
+      label 'image-builddd'
       idleMinutes 10
       defaultContainer 'jnlp'
       yaml """
@@ -16,7 +16,7 @@ spec:
   containers:
   - name: packer
     image: hashicorp/packer:full
-    command: ['cat']
+    command: ['cat  ']
     tty: true
     volumeMounts:
       - mountPath: "/root/.m2"
