@@ -13,9 +13,8 @@
     }],
 
     "provisioners": [{
-        "type": "ansible",
-        "user": "root",
-        "playbook_file": "./provision.yml"
+        "type": "shell",
+        "inline": ["ls -lah"]
     }],
 
     "post-processors": [[ {

@@ -34,7 +34,6 @@ spec:
           steps {
             container('packer') {
               sh """
-                python -m pip install ansible
                 packer build packer.json
               """
             }
