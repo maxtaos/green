@@ -34,13 +34,7 @@ spec:
           steps {
             container('packer') {
               sh """
-                PROJECT_ID=`wget -O- 'http://metadata/computeMetadata/v1/project/project-id' --header 'Metadata-Flavor: Google'`
-                BRANCH_NAME=${GIT_BRANCH}
-                packer build \
-                -var "project_id=\${PROJECT_ID}" \
-                -var "git_commit=${GIT_COMMIT}" \
-                -var "git_branch=\${BRANCH_NAME#*/}" \
-                packer.json
+                packer build packer.json
               """
             }
           }
