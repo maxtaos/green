@@ -19,21 +19,29 @@ spec:
     command:
     - cat
     tty: true
-  - name: docker-cmd
-    image: docker:dind
-    command:
-    - cat
+  env:
+    - name: DOCKER_HOST
+      value: tcp://localhost:2375
+  - name: dind
+    image: docker:18.05-dind
+    securityContext:
+      privileged: true
+    volumeMounts:
+      - name: dind-storage
+        mountPath: /var/lib/docker
   - name: gcloud
     image: gcr.io/cloud-builders/gcloud
     command:
     - cat
     tty: true
+  volumes:
+  - name: dind-storage
+    emptyDir: {}
 """
 }
   }
   stages {
     stage('Build Images') {
-      parallel {
         stage('Build GCE Image with Packer') {
           steps {
             container('packer') {
@@ -43,19 +51,6 @@ spec:
             }
           }
         }
-        stage('Build and push image with Cloud Build') {
-          steps {
-            container('gcloud') {
-              sh """
-              PROJECT_ID=`curl -s 'http://metadata/computeMetadata/v1/project/project-id' -H 'Metadata-Flavor: Google'`
-              BRANCH_NAME=${GIT_BRANCH}
-              IMAGE_TAG=gcr.io/\${PROJECT_ID}/redmine:\${BRANCH_NAME#*/}-${GIT_COMMIT}
-              PYTHONUNBUFFERED=1 gcloud builds submit -t \${IMAGE_TAG} .
-              """
-            }
-          }
-        }
-      }
     }
   }
 }
