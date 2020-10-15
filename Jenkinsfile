@@ -1,9 +1,9 @@
 pipeline {
   agent {
     kubernetes {
-      label 'image-build37'
+      label 'image-build'
       idleMinutes 10
-      defaultContainer 'jnlp37'
+      defaultContainer 'jnlpd'
       yaml """
 apiVersion: v1
 kind: Pod
@@ -30,11 +30,6 @@ spec:
     volumeMounts:
     - mountPath: /var/run/docker.sock
       name: docker-sock
-  - name: gcloud
-    image: gcr.io/cloud-builders/gcloud
-    command:
-    - cat
-    tty: true
   volumes:
     - name: docker-sock
       hostPath:
