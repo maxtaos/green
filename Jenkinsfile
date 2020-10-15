@@ -1,9 +1,9 @@
 pipeline {
   agent {
     kubernetes {
-      label 'image-build33'
+      label 'image-build37'
       idleMinutes 10
-      defaultContainer 'jnlp33'
+      defaultContainer 'jnlp37'
       yaml """
 apiVersion: v1
 kind: Pod
