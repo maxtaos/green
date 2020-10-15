@@ -19,6 +19,10 @@ spec:
     command:
     - cat
     tty: true
+  - name: docker-cmds
+    image: docker:1.12.6
+    command:
+    - cat
   - name: gcloud
     image: gcr.io/cloud-builders/gcloud
     command:
