@@ -1,9 +1,9 @@
 pipeline {
   agent {
     kubernetes {
-      label 'image-build-2'
+      label 'image-build-5'
       idleMinutes 10
-      defaultContainer 'jnlp-2'
+      defaultContainer 'jnlp-5'
       yaml """
 apiVersion: v1
 kind: Pod
@@ -42,7 +42,6 @@ spec:
   }
   stages {
     stage('Build Images') {
-        stage('Build GCE Image with Packer') {
           steps {
             container('packer') {
               sh """
@@ -50,7 +49,6 @@ spec:
               """
             }
           }
-        }
     }
   }
 }
