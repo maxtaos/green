@@ -1,9 +1,9 @@
 pipeline {
   agent {
     kubernetes {
-      label 'image-build-1'
+      label 'image-build-2'
       idleMinutes 10
-      defaultContainer 'jnlp-1'
+      defaultContainer 'jnlp-2'
       yaml """
 apiVersion: v1
 kind: Pod
@@ -19,8 +19,8 @@ spec:
     command:
     - cat
     tty: true
-  - name: docker-cmds
-    image: docker:1.12.6
+  - name: docker-cmd
+    image: docker:dind
     command:
     - cat
   - name: gcloud
