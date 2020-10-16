@@ -1,7 +1,6 @@
 pipeline {
   agent {
     kubernetes {
-      label 'image-builda-1'
       idleMinutes 10
       defaultContainer 'jnlp'
       yaml """
