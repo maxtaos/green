@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      label 'image-b'
+      label 'image-builda'
       idleMinutes 10
       defaultContainer 'jnlp'
       yaml """
@@ -14,17 +14,22 @@ spec:
   # Use service account that can deploy to all namespaces
   serviceAccountName: cd-jenkins
   containers:
-  - name: docker
-    image: docker:latest
-    command: ['cat']
+  - name: packer
+    image: hashicorp/packer:full
+    command: ['cat  ']
     tty: true
     volumeMounts:
+    - name: jenkins-home
+      mountPath: /var/jenkins_home/
     - mountPath: /var/run/docker.sock
-      name: docker-sock
+      name: docker-sock-volume
   volumes:
-    - name: docker-sock
-      hostPath:
-        path: /var/run/docker.sock
+  - name: jenkins-home
+  - name: docker-sock-volume
+    hostPath:
+      path: /var/run/docker.sock
+      type: File
+
 """
 }
   }
