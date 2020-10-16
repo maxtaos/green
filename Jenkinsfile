@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      label 'image-builda'
+      label 'image-builda-1'
       idleMinutes 10
       defaultContainer 'jnlp'
       yaml """
@@ -19,12 +19,9 @@ spec:
     command: ['cat  ']
     tty: true
     volumeMounts:
-    - name: jenkins-home
-      mountPath: /var/jenkins_home/
     - mountPath: /var/run/docker.sock
       name: docker-sock-volume
   volumes:
-  - name: jenkins-home
   - name: docker-sock-volume
     hostPath:
       path: /var/run/docker.sock
