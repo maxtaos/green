@@ -16,10 +16,10 @@ spec:
   containers:
   - name: packer
     image: hashicorp/packer:full
-    command: ['cat  ']
+    command: ['cat']
     tty: true
   volumes:
-  - type: HostPath
+  - type: hostPathVolume
     hostPath: /var/run/docker.sock
     mountPath: /var/run/docker.sock
 """
