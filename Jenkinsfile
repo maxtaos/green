@@ -18,10 +18,10 @@ spec:
     image: hashicorp/packer:full
     command: ['cat']
     tty: true
-  volumes:
-  - type: hostPathVolume
-    hostPath: /var/run/docker.sock
-    mountPath: /var/run/docker.sock
+    volumes:
+    - type: hostPathVolume
+      hostPath: /var/run/docker.sock
+      mountPath: /var/run/docker.sock
 """
 }
   }
