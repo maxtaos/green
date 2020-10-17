@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      label 'image-build-567'
+      label 'image-build-ff'
       idleMinutes 10
       defaultContainer 'jnlp'
       yaml """
@@ -20,9 +20,8 @@ spec:
     tty: true
   volumes:
   - type: HostPath
-       volumeName: docker-sock
-       hostPath: /var/run/docker.sock
-       mountPath: /var/run/docker.sock
+    hostPath: /var/run/docker.sock
+    mountPath: /var/run/docker.sock
 """
 }
   }
