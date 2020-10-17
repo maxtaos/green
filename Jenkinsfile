@@ -18,7 +18,6 @@ spec:
     image: hashicorp/packer:full
     command: ['cat  ']
     tty: true
-
 """
 }
   }
