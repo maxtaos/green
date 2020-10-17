@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      label 'image-build-56'
+      label 'image-build-567'
       idleMinutes 10
       defaultContainer 'jnlp'
       yaml """
@@ -18,6 +18,11 @@ spec:
     image: hashicorp/packer:full
     command: ['cat  ']
     tty: true
+  volumes:
+  - type: HostPath
+       volumeName: docker-sock
+       hostPath: /var/run/docker.sock
+       mountPath: /var/run/docker.sock
 """
 }
   }
@@ -26,6 +31,7 @@ spec:
           steps {
             container('packer') {
               sh """
+                docker version
                 packer build packer.json
               """
             }
