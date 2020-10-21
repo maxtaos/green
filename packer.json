@@ -1,25 +1,22 @@
 {
     "builders": [{
-        "type": "docker",
-        "image": "debian:jessie-slim",
+        "type":"docker",
+        "image": "alpine:3.9",
         "commit": true,
+        "name": "alpine",
         "changes": [
-            "VOLUME /data",
-            "WORKDIR /data",
-            "EXPOSE 6379",
-            "ENTRYPOINT [\"docker-entrypoint.sh\"]",
-            "CMD [\"redis-server\"]"
+            "CMD [\"nginx\", \"-g\", \"daemon off;\"]"
         ]
     }],
-
-    "provisioners": [{
+    "provisioners":[{
         "type": "shell",
-        "inline": ["ls -lah"]
+        "inline": [
+            "apk add nginx"
+        ]
     }],
-
-    "post-processors": [[ {
+    "post-processors":[{
         "type": "docker-tag",
-        "repository": "docker.io/alexdzyoba/redis-packer",
-        "tag": "latest"
-    } ]]
+        "repository":"ilhicas/nginx-debian-packer-build",
+        "tag":["1.0"]
+    }]
 }
