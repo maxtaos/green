@@ -3,7 +3,10 @@
         "type":"docker",
         "image": "alpine:3.9",
         "commit": true,
-        "name": "alpine"
+        "name": "alpine",
+        "changes": [
+            "CMD [\"nginx\", \"-g\", \"daemon off;\"]"
+        ]
     }],
     "provisioners":[{
         "type": "shell",
