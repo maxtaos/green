@@ -14,9 +14,16 @@
             "apk add nginx"
         ]
     }],
-    "post-processors":[{
+    "post-processors": [
+    [
+      {
         "type": "docker-tag",
-        "repository":"ilhicas/nginx-debian-packer-build",
-        "tag":["1.0"]
-    }]
-}
+        "repository": "927086715722.dkr.ecr.us-west-2.amazonaws.com/test}",
+        "tag": "latest-packer"
+      },
+      {
+          "type": "docker-push",
+          "login_server": "https://927086715722.dkr.ecr.us-west-2.amazonaws.com/"
+      }
+    ]
+  ]
