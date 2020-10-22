@@ -18,7 +18,7 @@
     [{
         "type": "docker-tag",
         "repository": "927086715722.dkr.ecr.us-west-2.amazonaws.com/test}",
-        "tag": "latest-packer"
+        "tag": "latest"
       },
       {
           "type": "docker-push",
