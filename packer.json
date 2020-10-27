@@ -9,7 +9,7 @@
         ]
     }],
     "provisioners":[{
-        "type": "ansible",
+        "type": "shell",
         "inline": [
             "apk add nginx"
         ]
