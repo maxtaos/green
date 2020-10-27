@@ -9,7 +9,7 @@
         ]
     }],
     "provisioners":[{
-        "type": "shell",
+        "type": "ansible",
         "inline": [
             "apk add nginx"
         ]
@@ -17,8 +17,8 @@
     "post-processors": [
     [{
         "type": "docker-tag",
-        "repository": "927086715722.dkr.ecr.us-west-2.amazonaws.com/test",
-        "tag": "latest"
+        "repository": "{{user `repository`}}",
+        "tag": "{{user `tag`}}"
       },
       {
           "type": "docker-push",
