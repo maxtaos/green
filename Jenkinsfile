@@ -8,11 +8,11 @@ agent any
       stage('build'){
           steps {
             sh "aws ecr get-login --region us-west-2 | sed 's/-e none https:\\/\\///' | bash"
-            sh "packer build -var 'repository=env.repository' -var 'tag=env.tag' packer.json"    }
+            sh "packer build -var 'repository=${repository}' -var 'tag=${tag}' packer.json"    }
         }
        stage ('check'){
 
          steps {
-              sh "trivy env.repository:env.tag"  }
+              sh "trivy ${repository}:${tag}"  }
         }
  }}
