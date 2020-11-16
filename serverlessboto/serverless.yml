@@ -5,7 +5,7 @@ frameworkVersion: '2'
 
 provider:
   name: aws
-  runtime: python3.8
+  runtime: python3.5
   role: arn:aws:iam::319675664350:role/admin
   region: us-west-2
 functions:
