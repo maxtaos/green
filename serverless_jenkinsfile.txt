@@ -1,0 +1,23 @@
+serverless config credentials -o --provider aws --key AKIAUU3RHQ7PJOU3CNRM --secret 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
+sls plugin install -n serverless-python-requirements
+sls deploy
+sls invoke -f lambdapy
+
+
+
+node(){
+   stage 'Checkout'
+
+   git branch: 'main',
+       credentialsId: 'maliyev@taos.com',
+       url: "https://github.com/maxtaos/green.git"
+
+stage 'deploy'
+        sh script: '''
+        #!/bin/bash
+        cd serverlessboto
+        sls config credentials -o --provider aws --key AKIAUU3RHQ7PJOU3CNRM --secret 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
+        sls plugin install -n serverless-python-requirements
+        sls deploy
+        sls invoke -f lambdapy'''
+  }
