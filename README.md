@@ -1,4 +1,4 @@
-# Scalable and Resilient Web Application on GCP
+#  Scalable and Resilient Web Application on GCP
 This repository contains the Deployment Manager templates and Chef recipes required to deploy the solution described in the [Scalable and Resilient Web Applications on Google Cloud Platform](http://cloud.google.com/solutions/scalable-and-resilient-apps) paper.
 
 Google Deployment Manager is used to provision and configure infrastructure services including instance groups, a load balancer, and a Cloud SQL instance, while Chef is used to install and configure the [Redmine application](http://www.redmine.org) on each of the autoscaled web servers. You may optionally configure the application to use Google Cloud Storage to handle file uploads.
